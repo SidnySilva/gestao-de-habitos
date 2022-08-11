@@ -19,7 +19,7 @@ function Signup() {
       .required("Usuário: Campo obrigatório")
       .matches(
         /^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/,
-        "Minimo 5 caracteres;Sem espaço;Deve começar com uma letra;Pode ter . - _;Não pode começar nem terminar com . - _"
+        "Minimo 5 caracteres;Sem espaço;Deve começar com uma letra;Pode ter . - _;Não pode começar nem terminar com . - _",
       ),
     email: yup
       .string()
@@ -30,7 +30,7 @@ function Signup() {
       .required("senha: campo obrigatorio")
       .matches(
         /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/,
-        "Mínimo 8 dígitos;Pelo menos um número;Pelo menos uma letra maiúscula;Pelo menos uma letra minúscula;Um caractere especial"
+        "Mínimo 8 dígitos;Pelo menos um número;Pelo menos uma letra maiúscula;Pelo menos uma letra minúscula;Um caractere especial",
       ),
 
     confirmPassword: yup
@@ -48,7 +48,7 @@ function Signup() {
   const onSubmitFunction = (data) => {
     delete data.confirmPassword;
     api
-      .post("users/", data)
+      .post("/users/", data)
       .then((_) => {
         history.push("/login");
         toast.success("Usuário cadastrado com sucesso!");
@@ -65,28 +65,28 @@ function Signup() {
         <form onSubmit={handleSubmit(onSubmitFunction)}>
           <TextField
             {...register("username")}
-            margin="normal"
+            margin='normal'
             fullWidth
-            label="Usuário"
-            variant="outlined"
+            label='Usuário'
+            variant='outlined'
             error={errors.username?.message}
           />
 
           <TextField
             {...register("email")}
-            margin="normal"
+            margin='normal'
             fullWidth
-            label="E-mail"
-            variant="outlined"
+            label='E-mail'
+            variant='outlined'
             error={errors.email?.message}
           />
           <TextField
             {...register("password")}
-            margin="normal"
+            margin='normal'
             fullWidth
-            label="Senha"
-            type="password"
-            variant="outlined"
+            label='Senha'
+            type='password'
+            variant='outlined'
             error={errors.password?.message}
           />
           <Error>
@@ -97,15 +97,15 @@ function Signup() {
           </Error>
           <TextField
             {...register("confirmPassword")}
-            margin="normal"
+            margin='normal'
             fullWidth
-            label="Confirmar senha"
-            type="password"
-            variant="outlined"
+            label='Confirmar senha'
+            type='password'
+            variant='outlined'
             error={errors.confirmPassword?.message}
           />
-          <Button color="#fff" text="Registrar" type="submit"></Button>
-          <Links to="/login" label="Ir para o login"></Links>
+          <Button color='#fff' text='Registrar' type='submit'></Button>
+          <Links to='/login' label='Ir para o login'></Links>
         </form>
       </Div>
     </Container>

@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export const signInThunk = (data) => (dispatch) => {
   api
-    .post(`/sessions/`, data)
+    .post(`sessions/`, data)
     .then((response) => {
       const { access } = response.data;
       localStorage.clear();
@@ -36,7 +36,7 @@ export const editUserThunk = (data) => (dispatch) => {
 
 export const searchUserThunk = (data) => (dispatch) => {
   api
-    .get(`/users/${data}/`)
+    .get(`users/${data}/`)
     .then((response) => {
       dispatch(editUser(response.data));
     })
